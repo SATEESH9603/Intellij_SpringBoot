@@ -33,8 +33,8 @@ public class ProductController {
         return productService.getSingleProduct(id);
     }
     @PostMapping()
-    public Product addNewProduct(@RequestBody String product) throws JSONException {
-        FakeStoreProductDto product1 = new FakeStoreProductDto();
+    public Product addNewProduct(@RequestBody Product product) throws JSONException {
+        /*FakeStoreProductDto product1 = new FakeStoreProductDto();
         //product1.setTitle("A new product."+product.getTitle());
         JSONObject jo = new JSONObject(product);
         product1.setTitle(jo.getString("title"));
@@ -43,20 +43,21 @@ public class ProductController {
         //product1.setCategory(new Category());
         //product1.getCategory().setName(jo.getString("category"));
         product1.setDescription(jo.getString("description"));
-        product1.setImage(jo.getString("image"));
+        product1.setImage(jo.getString("image"));*/
 
-        return productService.addNewproduct(product1);
+        return productService.addNewproduct(product);
 
     }
 
     @PatchMapping("/{id}")
     public Product updateProduct(@PathVariable("id") Long id,@RequestBody Product product){
-        return new Product();
+
+        return productService.updateProduct(id,product);
     }
 
     @PutMapping("/{id}")
     public Product replaceProduct(@PathVariable("id") Long id, @RequestBody Product product){
-        return new Product();
+        return productService.replaceProduct(id,product);
     }
 
     @DeleteMapping("/{id}")
